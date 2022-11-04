@@ -132,6 +132,13 @@ body .header {
   background-repeat: no-repeat;
   background-size: cover;
 }
+body .footer {
+  font-size: 11px;
+  text-align: center;
+}
+body .footer a {
+  color: hsl(228deg, 45%, 44%);
+}
 
 .main {
   width: 100%;
