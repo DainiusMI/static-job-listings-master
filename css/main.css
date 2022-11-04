@@ -87,10 +87,6 @@
   color: #FFF;
 }
 
-.avatar {
-  background-image: url(../../images/photosnap.svg);
-}
-
 .new,
 .featured {
   padding: 0.3rem 0.6rem;
