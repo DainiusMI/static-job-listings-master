@@ -1,0 +1,40 @@
+@use "./components/list-item";
+@use "./variables" as var;
+
+@mixin  flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    @include flex(column, center, center);
+    
+    background-color: var.$lighter-primary-color;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    @include flex(column, center, center);
+}
+
+.job-list {
+    width: 100%;
+    @include flex(column, center, center);
+    gap: 2rem;
+}
+
+

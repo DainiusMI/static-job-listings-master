@@ -1,0 +1,107 @@
+
+@use "../variables" as var;
+
+@mixin  flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+// just the list items layout
+.job-container {
+    width: 90%;
+    @include flex(row, center, space-between);
+    padding: 1.5rem;
+  
+    background-color: var.$listing-color;
+
+    box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
+
+    .left-side {
+        width: 50%;
+        @include flex(row, center, flex-start);
+        gap: 1rem;
+
+        .avatar {
+            min-height: 4rem;
+            min-width: 4rem;
+            background-size: contain;
+            background-position: center;
+            background-repeat: none;
+        }
+        .job-description {
+            @include flex(column, flex-start, center);
+            gap: .5rem;
+            .agency-name {
+                font-weight: 700;
+                color: var.$primary-color;
+            }
+            .job-title {
+                font-weight: 700;
+                font-size: 1.1rem;
+
+                cursor: pointer;
+                &:hover {
+                    color: var.$primary-color;
+                }
+            }
+            .description-header,
+            .description-footer {
+                @include flex(row, center, flex-start);
+                gap: .8rem;
+                
+                i {
+                    font-size: .3rem;
+                }
+            }
+            .description-footer * {
+                opacity: .5;
+            }
+        }
+    }
+    .right-side {
+        width: 50%;
+        @include flex(row, center, flex-end);
+        .qualifications {
+            @include flex(row, center, flex-start);
+            gap: .5rem;
+            & * {
+                background-color: var.$background-color;
+                padding: .3rem .6rem;
+                border-radius: .5rem;
+
+                color: var.$primary-color;
+                font-weight: 700;
+
+                cursor: pointer;
+                &:hover {
+                    background-color: var.$primary-color;
+                    color: var.$listing-color;
+                }
+            }
+        }
+    }
+}
+.avatar {
+    background-image: url(../../images/photosnap.svg);
+
+}
+
+.new,
+.featured {
+    padding: .3rem .6rem;
+    border-radius: .7rem;
+
+    font-size: .7rem;
+    font-weight: 700;
+    color: white;
+}
+.new {
+    background-color: var.$primary-color;
+}
+.featured {
+    background-color: black;
+}

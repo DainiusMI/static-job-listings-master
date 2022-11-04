@@ -1,0 +1,145 @@
+.job-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: #FFF;
+  box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.33);
+}
+.job-container .left-side {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.job-container .left-side .avatar {
+  min-height: 4rem;
+  min-width: 4rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: none;
+}
+.job-container .left-side .job-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.job-container .left-side .job-description .agency-name {
+  font-weight: 700;
+  color: #68A79F;
+}
+.job-container .left-side .job-description .job-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.job-container .left-side .job-description .job-title:hover {
+  color: #68A79F;
+}
+.job-container .left-side .job-description .description-header,
+.job-container .left-side .job-description .description-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+}
+.job-container .left-side .job-description .description-header i,
+.job-container .left-side .job-description .description-footer i {
+  font-size: 0.3rem;
+}
+.job-container .left-side .job-description .description-footer * {
+  opacity: 0.5;
+}
+.job-container .right-side {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.job-container .right-side .qualifications {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+.job-container .right-side .qualifications * {
+  background-color: hsl(180deg, 52%, 96%);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  color: #68A79F;
+  font-weight: 700;
+  cursor: pointer;
+}
+.job-container .right-side .qualifications *:hover {
+  background-color: #68A79F;
+  color: #FFF;
+}
+
+.avatar {
+  background-image: url(../../images/photosnap.svg);
+}
+
+.new,
+.featured {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+}
+
+.new {
+  background-color: #68A79F;
+}
+
+.featured {
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F0FAFB;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}/*# sourceMappingURL=main.css.map */
