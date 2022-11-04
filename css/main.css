@@ -121,11 +121,12 @@ body {
   font-family: "Bai Jamjuree", sans-serif;
   font-size: 15px;
   font-weight: 500;
+  overflow-x: hidden;
   background-color: #F0FAFB;
 }
 body .header {
   width: 100%;
-  height: 6rem;
+  min-height: 9.5rem;
   background-color: #5CA8A6;
   background-image: url(../images/bg-header-desktop.svg);
   background-position: top center;
