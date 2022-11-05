@@ -19,6 +19,7 @@
     position: absolute;
     top: -6.5rem;
     left: 100;
+    opacity: 0;
     & * {
         color: var.$darker-primary-color;
         font-weight: 700;
@@ -51,3 +52,4 @@
         }
     }
 }
+

@@ -54,19 +54,31 @@ dataArr.map(x => render(x));
 
 
 const qualification = document.querySelectorAll("button");
+const filterContainer = document.getElementById("filter-container");
+const filterList = document.getElementById("filter-list");
 let filterArr = [];
 
 qualification.forEach(element => {
     element.addEventListener("click", () => {
         if (!filterArr.includes(element.value)) {
             filterArr.push(element.value);
+            displayFilter();
             renderFilterElement();
         }
-      
     })
 })
 
-const filterList = document.getElementById("filter-list");
+
+function displayFilter() {
+    if (filterArr.length === 0) {
+        document.getElementById("filter-container").style.opacity = 0;
+    }
+    if (filterArr.length === 1) {
+        document.getElementById("filter-container").style.opacity = 1;
+    }
+    
+}
+
 
 function renderFilterElement() {
     let filterString = "";
@@ -97,18 +109,16 @@ function renderFilterElementORG(element) {
 }
 
 let closeButton = document.querySelectorAll(".close");
-console.log(closeButton)
+
 
 const trackFilterMutations = mutations => {
     mutations.forEach(mutation => {
         if (mutation.type === "childList") {
             closeButton = document.querySelectorAll(".close");
-            console.log(closeButton)
-
             closeButton.forEach(button => {
                 button.addEventListener("click", () => {
                     filterArr.splice(filterArr.indexOf(button.value), 1);
-                    console.log(button.value)
+                    displayFilter()
                     renderFilterElement();
                 })
             })
