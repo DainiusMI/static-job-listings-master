@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 original README.md
+backup main.js
 # Avoid accidental Sketch file upload 
 ###############################################
 ## Please do not remove line 5 - thanks! 🙂 ##

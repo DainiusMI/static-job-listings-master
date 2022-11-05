@@ -9,6 +9,7 @@
 
 .filter-container {
     width: 90%;
+    height: 5rem;
     padding: 1.5rem 2.5rem;
 
     @include flex(row, center, space-between);
@@ -16,7 +17,7 @@
     background-color: var.$listing-color;
 
     position: absolute;
-    top: -7rem;
+    top: -6.5rem;
     left: 100;
     & * {
         color: var.$darker-primary-color;
@@ -32,7 +33,6 @@
 .filter-list {
     @include flex(row, center, flex-start);
     gap: 3rem;
-
     .filter-item {
         @include flex(row, center, flex-start);
         .qualification {
@@ -41,6 +41,7 @@
         .close {
             padding: .5rem;
             background-color: var.$darker-primary-color;
+            border: none;
             border-radius: 0 .5rem .5rem 0;
             @include flex(row, center , center);
             cursor: pointer;

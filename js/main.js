@@ -60,7 +60,66 @@ qualification.forEach(element => {
     element.addEventListener("click", () => {
         if (!filterArr.includes(element.value)) {
             filterArr.push(element.value);
+            renderFilterElement();
         }
-        console.log(filterArr)
+      
     })
 })
+
+const filterList = document.getElementById("filter-list");
+
+function renderFilterElement() {
+    let filterString = "";
+    for (let i = 0; i < filterArr.length; i++) {
+        filterString +=         `
+        <div class="filter-item">
+            <div class="qualification">${filterArr[i]}</div>
+            <button class="close" value="${filterArr[i]}" id="${filterArr[i]}">
+                <img src="./images/icon-remove.svg">
+            </button>
+        </div>
+        `;
+    }
+    filterList.innerHTML = filterString;
+}
+
+function renderFilterElementORG(element) {
+    filterList.innerHTML += 
+        `
+        <div class="filter-item">
+            <div class="qualification">${element}</div>
+            <button class="close" value="${element}" id="${element}">
+                <img src="./images/icon-remove.svg">
+            </button>
+        </div>
+        `
+    ;
+}
+
+let closeButton = document.querySelectorAll(".close");
+console.log(closeButton)
+
+const trackFilterMutations = mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === "childList") {
+            closeButton = document.querySelectorAll(".close");
+            console.log(closeButton)
+
+            closeButton.forEach(button => {
+                button.addEventListener("click", () => {
+                    filterArr.splice(filterArr.indexOf(button.value), 1);
+                    console.log(button.value)
+                    renderFilterElement();
+                })
+            })
+            
+        }
+    })
+}
+
+const config = { attributes: true, childList: true, subtree: true };
+const observeFilter = new MutationObserver(trackFilterMutations);
+
+observeFilter.observe(filterList, config);
+
+
