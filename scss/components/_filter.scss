@@ -1,0 +1,52 @@
+@use "../variables" as var;
+
+@mixin  flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+.filter-container {
+    width: 90%;
+    padding: 1.5rem 2.5rem;
+
+    @include flex(row, center, space-between);
+
+    background-color: var.$listing-color;
+
+    position: absolute;
+    top: -7rem;
+    left: 100;
+    & * {
+        color: var.$darker-primary-color;
+        font-weight: 700;
+    }
+    .clear {
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.filter-list {
+    @include flex(row, center, flex-start);
+    gap: 3rem;
+
+    .filter-item {
+        @include flex(row, center, flex-start);
+        .qualification {
+            border-radius: .5rem 0 0 .5rem;
+        }
+        .close {
+            padding: .5rem;
+            background-color: var.$darker-primary-color;
+            border-radius: 0 .5rem .5rem 0;
+            @include flex(row, center , center);
+            cursor: pointer;
+            &:hover {
+                background-color: black;
+            }
+        }
+    }
+}

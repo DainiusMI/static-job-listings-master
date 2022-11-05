@@ -1,4 +1,5 @@
 @use "./components/list-item";
+@use "./components/filter";
 @use "./variables" as var;
 
 @mixin  flex($direction, $align, $justify) {
@@ -36,6 +37,18 @@ body {
         background-size:cover;
 
     }
+    .main {
+        width: 100%;
+        height: auto;
+        @include flex(column, center, center);
+        position: relative;
+
+        .job-list {
+            width: 100%;
+            @include flex(column, center, center);
+            gap: 2rem;
+        }
+    }
     .footer {
         font-size: 11px; text-align: center;
         a {
@@ -44,17 +57,9 @@ body {
     }
 }
 
-.main {
-    width: 100%;
-    height: auto;
-    @include flex(column, center, center);
-
+.shadow {
+    box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 4px 7px 3px rgba(0,0,0,0.33);
 }
-
-.job-list {
-    width: 100%;
-    @include flex(column, center, center);
-    gap: 2rem;
-}
-
 

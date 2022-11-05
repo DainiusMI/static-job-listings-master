@@ -7,7 +7,7 @@ const jobList = document.getElementById("job-list");
 function render(obj) {
     let renderString = "";
     renderString = `
-        <li class="job-container" id="${obj.id}">
+        <li class="job-container shadow" id="${obj.id}">
             <div class="left-side">
                 <img class="avatar" src="${obj.logo}" alt="${obj.company}">
                 <div class="job-description">
@@ -32,14 +32,14 @@ function render(obj) {
             </div>
             <div class="right-side">
                 <div class="qualifications">
-                    <div class="role">${obj.role}</div>
-                    <div class="level">${obj.level}</div>
+                    <button class="qualification" value="${obj.role}">${obj.role}</button>
+                    <button class="qualification" value="${obj.level}">${obj.level}</button>
     `;  
     if (obj.languages.length) {
-        renderString += obj.languages.map(x => `<div class="languages">${x}</div>`).join("");
+        renderString += obj.languages.map(x => `<button class="qualification" value="${x}">${x}</button>`).join("");
     }   
     if (obj.tools.length) {
-        renderString += obj.tools.map(x => `<div class="tools">${x}</div>`).join("");
+        renderString += obj.tools.map(x => `<button class="qualification" value="${x}">${x}</button>`).join("");
     }
     renderString += `
                 </div>
@@ -50,3 +50,17 @@ function render(obj) {
 }
 
 dataArr.map(x => render(x));
+
+
+
+const qualification = document.querySelectorAll("button");
+let filterArr = [];
+
+qualification.forEach(element => {
+    element.addEventListener("click", () => {
+        if (!filterArr.includes(element.value)) {
+            filterArr.push(element.value);
+        }
+        console.log(filterArr)
+    })
+})

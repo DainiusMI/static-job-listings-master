@@ -16,19 +16,38 @@
   <title>Frontend Mentor | Job Listings</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+
 </head>
 <body>
   <div class="header"></div>
 
     <div class="main">
 
+      <div class="filter-container shadow">
+        <div class="filter-list" id="filter-list">
+          <div class="filter-item" value="Frontend">
+            <div class="qualification">Frontend</div>
+            <div class="close" id="Frontend">
+              <img src="./images/icon-remove.svg">
+            </div>
+          </div>
+        </div>
+        <div class="clear">Clear</div>
+      </div>
 
       <ul class="job-list" id="job-list">
 
+      </ul>
+
+    </div>
+ 
+  <script type="module" src="./js/main.js"></script>
+  <div class="footer">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Dainius MI</a>.
+  </div>
+
+  
         <!--
         <li class="job-container" >
           <div class="left-side">
@@ -65,14 +84,5 @@
         </li>
 
         -->
-      </ul>
-
-    </div>
- 
-  <script type="module" src="./js/main.js"></script>
-  <div class="footer">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Dainius MI</a>.
-  </div>
 </body>
 </html>
