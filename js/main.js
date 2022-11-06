@@ -75,7 +75,6 @@ function generateFilter() {
 
 
 function filterData() {
-    
     dataFiltered = dataArr.map(obj => {
         let found = 0;
         for (let index in filterArr) {
@@ -104,24 +103,13 @@ function renderListings() {
     filterData();
     generateListings();
 }
+
 renderListings();
 
 
-const qualification = document.querySelectorAll("button");
+let qualification = document.querySelectorAll("button");
 const filterList = document.getElementById("filter-list");
 
-
-// udd to filter
-qualification.forEach(element => {
-    element.addEventListener("click", () => {
-        if (!filterArr.includes(element.value)) {
-            filterArr.push(element.value);
-            displayFilter();
-            generateFilter();
-            renderListings();
-        }
-    })
-})
 
 
 // display or hide filter container
@@ -137,6 +125,7 @@ function displayFilter() {
 document.getElementById("clear").addEventListener("click", () => {
     filterArr.length = 0;
     displayFilter();
+    renderListings()
 })
 
 
@@ -158,13 +147,45 @@ const trackFilterMutations = mutations => {
     })
 }
 
+const trackListingMutations = mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === "childList") {
+            qualification = document.querySelectorAll("button");
+            // udd to filter
+            qualification.forEach(element => {
+                element.addEventListener("click", () => {
+                    if (!filterArr.includes(element.value)) {
+                        filterArr.push(element.value);
+                        displayFilter();
+                        generateFilter();
+                        renderListings();
+                    }
+                })
+            })
+        }
 
+    })
+}
+
+// udd to filter
+qualification.forEach(element => {
+    element.addEventListener("click", () => {
+        if (!filterArr.includes(element.value)) {
+            filterArr.push(element.value);
+            displayFilter();
+            generateFilter();
+            renderListings();
+        }
+    })
+})
 
 
 const config = { attributes: true, childList: true, subtree: true };
 const observeFilter = new MutationObserver(trackFilterMutations);
+const observeListings = new MutationObserver(trackListingMutations);
 
 observeFilter.observe(filterList, config);
+observeListings.observe(jobList, config);
 
 
 
