@@ -1,5 +1,5 @@
 # STATIC JOB LISTINGS
-This is a challenge from frontendmentors.io, mainly picked this challenge up because I was for a practical project to practice Object Orianted Programming on. The options suggested by the challenge do not really suite me at this point, I am interested in generating HTML code with javascript how ever I am not yet familiar with any JS framework so I am going to try to pull data out of a object with plain javascript.
+This is a challenge from frontendmentors.io. The options suggested by the challenge do not really suite me at this point, I am interested in generating HTML code with javascript how ever I am not yet familiar with any JS framework so I am going to try to pull data out of a object with plain javascript.
 
 ## REQUIREMENTS:
 - View the optimal layout for the site depending on their device's screen size
