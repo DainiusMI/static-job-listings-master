@@ -3,10 +3,15 @@ import dataArr from "./data.json" assert {type: "json"};
 
 const jobList = document.getElementById("job-list");
 
+let filterArr = [];
+let dataFiltered = [];
+
+
 // render job listings
-function render(obj) {
+function generateListings(obj) {
     let renderString = "";
-    renderString = `
+    dataFiltered.map(obj =>{
+        renderString += `
         <li class="job-container shadow" id="${obj.id}">
             <div class="left-side">
                 <img class="avatar" src="${obj.logo}" alt="${obj.company}">
@@ -46,48 +51,13 @@ function render(obj) {
             </div>
         </li>
     `;
-    jobList.innerHTML += renderString;
+    });
+    jobList.innerHTML = renderString;
 }
 
-// initail rendering of job listings
-dataArr.map(x => render(x));
-
-
-
-const qualification = document.querySelectorAll("button");
-const filterList = document.getElementById("filter-list");
-let filterArr = [];
-
-
-// udd to filter
-qualification.forEach(element => {
-    element.addEventListener("click", () => {
-        if (!filterArr.includes(element.value)) {
-            filterArr.push(element.value);
-            displayFilter();
-            renderFilterElement();
-        
-        }
-    })
-})
-
-// reset filter
-document.getElementById("clear").addEventListener("click", () => {
-    filterArr.length = 0;
-    displayFilter();
-})
-// display or hide filter container
-function displayFilter() {
-    if (filterArr.length === 0) {
-        document.getElementById("filter-container").style.opacity = 0;
-    }
-    if (filterArr.length === 1) {
-        document.getElementById("filter-container").style.opacity = 1;
-    }  
-}
 
 // render DOM elements for filter
-function renderFilterElement() {
+function generateFilter() {
     let filterString = "";
     for (let i = 0; i < filterArr.length; i++) {
         filterString +=         `
@@ -103,31 +73,10 @@ function renderFilterElement() {
 }
 
 
-let closeButton = document.querySelectorAll(".close");
-// remove items from filter
-const trackFilterMutations = mutations => {
-    mutations.forEach(mutation => {
-        if (mutation.type === "childList") {
-            closeButton = document.querySelectorAll(".close");
-            closeButton.forEach(button => {
-                button.addEventListener("click", () => {
-                    filterArr.splice(filterArr.indexOf(button.value), 1);
-                    displayFilter()
-                    renderFilterElement();
-                })
-            })
-        }
-    })
-}
 
-const config = { attributes: true, childList: true, subtree: true };
-const observeFilter = new MutationObserver(trackFilterMutations);
-
-observeFilter.observe(filterList, config);
-
-
-function filterListings() {
-    return dataArr.map(obj => {
+function filterData() {
+    
+    dataFiltered = dataArr.map(obj => {
         let found = 0;
         for (let index in filterArr) {
             for (let key in obj) {
@@ -147,9 +96,76 @@ function filterListings() {
             return obj
         }
     }).filter(obj =>  obj?obj:false);
+    console.log(dataFiltered)
 }
 
-console.log(filterListings())
+
+function renderListings() {
+    filterData();
+    generateListings();
+}
+renderListings();
+
+
+const qualification = document.querySelectorAll("button");
+const filterList = document.getElementById("filter-list");
+
+
+// udd to filter
+qualification.forEach(element => {
+    element.addEventListener("click", () => {
+        if (!filterArr.includes(element.value)) {
+            filterArr.push(element.value);
+            displayFilter();
+            generateFilter();
+            renderListings();
+        }
+    })
+})
+
+
+// display or hide filter container
+function displayFilter() {
+    if (filterArr.length === 0) {
+        document.getElementById("filter-container").style.opacity = 0;
+    }
+    if (filterArr.length === 1) {
+        document.getElementById("filter-container").style.opacity = 1;
+    }  
+}
+// reset filter
+document.getElementById("clear").addEventListener("click", () => {
+    filterArr.length = 0;
+    displayFilter();
+})
+
+
+
+let closeButton = document.querySelectorAll(".close");
+// remove items from filter
+const trackFilterMutations = mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === "childList") {
+            closeButton = document.querySelectorAll(".close");
+            closeButton.forEach(button => {
+                button.addEventListener("click", () => {
+                    filterArr.splice(filterArr.indexOf(button.value), 1);
+                    displayFilter()
+                    generateFilter();
+                })
+            })
+        }
+    })
+}
+
+
+
+
+const config = { attributes: true, childList: true, subtree: true };
+const observeFilter = new MutationObserver(trackFilterMutations);
+
+observeFilter.observe(filterList, config);
+
 
 
 
