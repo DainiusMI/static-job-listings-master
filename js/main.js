@@ -3,7 +3,7 @@ import dataArr from "./data.json" assert {type: "json"};
 
 const jobList = document.getElementById("job-list");
 
-
+// render job listings
 function render(obj) {
     let renderString = "";
     renderString = `
@@ -49,37 +49,44 @@ function render(obj) {
     jobList.innerHTML += renderString;
 }
 
+// initail rendering of job listings
 dataArr.map(x => render(x));
 
 
 
 const qualification = document.querySelectorAll("button");
-const filterContainer = document.getElementById("filter-container");
 const filterList = document.getElementById("filter-list");
 let filterArr = [];
 
+
+// udd to filter
 qualification.forEach(element => {
     element.addEventListener("click", () => {
         if (!filterArr.includes(element.value)) {
             filterArr.push(element.value);
             displayFilter();
             renderFilterElement();
+        
         }
     })
 })
 
-
+// reset filter
+document.getElementById("clear").addEventListener("click", () => {
+    filterArr.length = 0;
+    displayFilter();
+})
+// display or hide filter container
 function displayFilter() {
     if (filterArr.length === 0) {
         document.getElementById("filter-container").style.opacity = 0;
     }
     if (filterArr.length === 1) {
         document.getElementById("filter-container").style.opacity = 1;
-    }
-    
+    }  
 }
 
-
+// render DOM elements for filter
 function renderFilterElement() {
     let filterString = "";
     for (let i = 0; i < filterArr.length; i++) {
@@ -95,22 +102,9 @@ function renderFilterElement() {
     filterList.innerHTML = filterString;
 }
 
-function renderFilterElementORG(element) {
-    filterList.innerHTML += 
-        `
-        <div class="filter-item">
-            <div class="qualification">${element}</div>
-            <button class="close" value="${element}" id="${element}">
-                <img src="./images/icon-remove.svg">
-            </button>
-        </div>
-        `
-    ;
-}
 
 let closeButton = document.querySelectorAll(".close");
-
-
+// remove items from filter
 const trackFilterMutations = mutations => {
     mutations.forEach(mutation => {
         if (mutation.type === "childList") {
@@ -122,7 +116,6 @@ const trackFilterMutations = mutations => {
                     renderFilterElement();
                 })
             })
-            
         }
     })
 }
@@ -131,5 +124,36 @@ const config = { attributes: true, childList: true, subtree: true };
 const observeFilter = new MutationObserver(trackFilterMutations);
 
 observeFilter.observe(filterList, config);
+
+
+function filterListings() {
+    return dataArr.map(obj => {
+        let found = 0;
+        for (let index in filterArr) {
+            for (let key in obj) {
+                if (typeof obj[key] === "object") {
+                    if (obj[key].includes(filterArr[index])) {
+                        found++;
+                    }
+                }
+                else {
+                    if (obj[key] === filterArr[index]) {
+                        found++;
+                    }
+                }
+            }
+        }
+        if (found === filterArr.length) {
+            return obj
+        }
+    }).filter(obj =>  obj?obj:false);
+}
+
+console.log(filterListings())
+
+
+
+
+
 
 
