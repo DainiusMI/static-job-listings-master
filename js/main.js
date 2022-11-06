@@ -95,7 +95,6 @@ function filterData() {
             return obj
         }
     }).filter(obj =>  obj?obj:false);
-    console.log(dataFiltered)
 }
 
 
@@ -107,7 +106,7 @@ function renderListings() {
 renderListings();
 
 
-let qualification = document.querySelectorAll("button");
+let qualification = document.querySelectorAll(".qualification");
 const filterList = document.getElementById("filter-list");
 
 
@@ -121,6 +120,8 @@ function displayFilter() {
         document.getElementById("filter-container").style.opacity = 1;
     }  
 }
+
+let closeButton = document.querySelectorAll(".close");
 // reset filter
 document.getElementById("clear").addEventListener("click", () => {
     filterArr.length = 0;
@@ -129,8 +130,6 @@ document.getElementById("clear").addEventListener("click", () => {
 })
 
 
-
-let closeButton = document.querySelectorAll(".close");
 // remove items from filter
 const trackFilterMutations = mutations => {
     mutations.forEach(mutation => {
@@ -138,9 +137,12 @@ const trackFilterMutations = mutations => {
             closeButton = document.querySelectorAll(".close");
             closeButton.forEach(button => {
                 button.addEventListener("click", () => {
+                    console.log("close")
                     filterArr.splice(filterArr.indexOf(button.value), 1);
-                    displayFilter()
+                    //console.log(filterArr)
+                    displayFilter();
                     generateFilter();
+                    renderListings();
                 })
             })
         }
@@ -150,7 +152,7 @@ const trackFilterMutations = mutations => {
 const trackListingMutations = mutations => {
     mutations.forEach(mutation => {
         if (mutation.type === "childList") {
-            qualification = document.querySelectorAll("button");
+            qualification = document.querySelectorAll(".qualification");
             // udd to filter
             qualification.forEach(element => {
                 element.addEventListener("click", () => {
@@ -181,6 +183,8 @@ qualification.forEach(element => {
 
 
 const config = { attributes: true, childList: true, subtree: true };
+
+
 const observeFilter = new MutationObserver(trackFilterMutations);
 const observeListings = new MutationObserver(trackListingMutations);
 
