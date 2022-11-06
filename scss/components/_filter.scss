@@ -33,7 +33,7 @@
 }
 .filter-list {
     @include flex(row, center, flex-start);
-    gap: 3rem;
+    gap: 1rem;
     .filter-item {
         @include flex(row, center, flex-start);
         .qualification {
