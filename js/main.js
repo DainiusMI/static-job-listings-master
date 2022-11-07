@@ -11,8 +11,17 @@ let dataFiltered = [];
 function generateListings(obj) {
     let renderString = "";
     dataFiltered.map(obj =>{
+        if (obj.featured === true) {
+            renderString += `
+            <li class="job-container shadow highlight" id="${obj.id}">
+            `
+        }
+        else {
+            renderString += `
+            <li class="job-container shadow" id="${obj.id}">
+            `
+        }
         renderString += `
-        <li class="job-container shadow" id="${obj.id}">
             <div class="left-side">
                 <img class="avatar" src="${obj.logo}" alt="${obj.company}">
                 <div class="job-description">
@@ -35,6 +44,7 @@ function generateListings(obj) {
                     </div>
                 </div>
             </div>
+            <hr></hr>
             <div class="right-side">
                 <div class="qualifications">
                     <button class="qualification" value="${obj.role}">${obj.role}</button>

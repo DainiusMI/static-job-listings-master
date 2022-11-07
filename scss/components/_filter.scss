@@ -1,11 +1,5 @@
 @use "../variables" as var;
-
-@mixin  flex($direction, $align, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    align-items: $align;
-    justify-content: $justify;
-}
+@use "./mixin" as *;
 
 .filter-container {
     width: 90%;

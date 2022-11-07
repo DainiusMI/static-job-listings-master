@@ -1,12 +1,6 @@
 
 @use "../variables" as var;
-
-@mixin  flex($direction, $align, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    align-items: $align;
-    justify-content: $justify;
-}
+@use "./mixin" as *;
 
 // just the list items layout
 .job-container {
@@ -14,9 +8,11 @@
     width: 90%;
     @include flex(row, center, space-between);
     padding: 1.5rem;
-  
+    border-radius: .4rem 0 0 .4rem;
     background-color: var.$listing-color;
-
+    hr {
+        display: none;
+    }
     .left-side {
         width: 50%;
         @include flex(row, center, flex-start);
@@ -91,7 +87,6 @@
 .featured {
     padding: .3rem .6rem;
     border-radius: .7rem;
-
     font-size: .7rem;
     font-weight: 700;
     color: white;
@@ -101,4 +96,8 @@
 }
 .featured {
     background-color: black;
+}
+.highlight {
+    border-left: .4rem solid var.$darker-primary-color;
+
 }
