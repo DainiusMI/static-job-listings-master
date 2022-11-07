@@ -81,6 +81,7 @@
   color: #FFF;
 }
 
+.filter,
 .qualification {
   background-color: hsl(180deg, 52%, 96%);
   padding: 0.3rem 0.6rem;

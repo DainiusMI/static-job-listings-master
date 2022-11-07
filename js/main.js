@@ -62,7 +62,7 @@ function generateFilter() {
     for (let i = 0; i < filterArr.length; i++) {
         filterString +=         `
         <div class="filter-item">
-            <div class="qualification">${filterArr[i]}</div>
+            <div class="filter">${filterArr[i]}</div>
             <button class="close" value="${filterArr[i]}" id="${filterArr[i]}">
                 <img src="./images/icon-remove.svg">
             </button>
