@@ -75,16 +75,17 @@
   justify-content: flex-start;
   width: 100%;
 }
-.right-side .qualifications {
+
+.qualifications {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
 }
-.right-side .qualifications .qualification {
+.qualifications .qualification {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.right-side .qualifications .qualification:hover {
+.qualifications .qualification:hover {
   background-color: #68A79F;
   color: #FFF;
 }
@@ -199,29 +200,50 @@ hr {
     justify-content: center;
     gap: 2rem;
   }
-  .job-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem;
-  }
-  .job-container hr {
-    display: none;
-  }
   .job-container .left-side {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     padding: 0;
-    width: 50%;
     position: static;
   }
   .job-container .left-side .avatar {
     position: static;
     background-position: center;
     transform: translateY(0);
+  }
+}
+@media (min-width: 500px) {
+  .job-container .right-side .qualifications {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+@media (min-width: 550px) {
+  .job-container .right-side .qualifications {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+}
+@media (min-width: 800px) {
+  .job-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: red;
+  }
+  .job-container hr {
+    display: none;
+  }
+  .job-container .left-side {
+    width: 50%;
   }
   .job-container .right-side {
     display: flex;

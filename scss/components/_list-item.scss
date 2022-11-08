@@ -68,24 +68,24 @@
 
 .right-side {
     @include flex(row, center, flex-start);
-
     width: 100%;
-    .qualifications {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+   
+}
 
-        gap: .5rem;
-        .qualification {
-            border-radius: .5rem;
-            cursor: pointer;
-            &:hover {
-                background-color: var.$primary-color;
-                color: var.$listing-color;
-            }
+.qualifications {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: .5rem;
+    .qualification {
+        border-radius: .5rem;
+        cursor: pointer;
+        &:hover {
+            background-color: var.$primary-color;
+            color: var.$listing-color;
         }
     }
 }
-
 
 .filter,
 .qualification {

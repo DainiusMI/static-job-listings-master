@@ -6,13 +6,10 @@
 
     .filter-container {
         padding: 1.5rem 2.5rem;
-
         top: -5rem;
         .filter-list {
-
             @include flex(row, center, flex-start);
             gap: 1rem;
-
         }
     }
     .main {
@@ -23,17 +20,9 @@
         }
     }
     .job-container {
-        @include flex(row, center, space-between);
-        padding: 1.5rem;
-   
-     
-        hr {
-            display: none;
-        }
         .left-side {
             @include flex(row, center, flex-start);
             padding: 0;
-            width: 50%;
             position: static;
             .avatar {
                 position: static;
@@ -41,16 +30,53 @@
                 transform: translateY(0);
             }
         }
+    }
+}
 
+@media (min-width: 500px) { 
+
+    .job-container {
         .right-side {
-            @include flex(row, center, flex-end);
-            width: 50%;
-
             .qualifications {
-                @include flex(row, center, flex-start);
-
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
             }
         }
     }
+}
 
+@media (min-width: 550px) { 
+
+    .job-container {
+        .right-side {
+            .qualifications {
+                @include flex(row, center, flex-start);
+                gap: 1rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) { 
+
+    .job-container {
+        @include flex(row, center, space-between);
+        padding: 1.5rem;
+        background-color: red;
+        hr {
+            display: none;
+        }
+        .left-side {
+            width: 50%;
+        }
+        .right-side {
+            @include flex(row, center, flex-end);
+            width: 50%;
+            .qualifications {
+                @include flex(row, center, flex-start);
+             
+            }
+        }
+    }
 }
