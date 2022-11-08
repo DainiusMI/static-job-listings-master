@@ -2,17 +2,17 @@
 @use "./mixin" as *;
 
 .filter-container {
-    width: 90%;
-    height: 5rem;
-    padding: 1.5rem 2.5rem;
-
     @include flex(row, center, space-between);
 
-    background-color: var.$listing-color;
+    width: 90%;
+    min-height: 5rem;
+    padding: 1rem;
 
+    background-color: var.$listing-color;
     position: absolute;
     top: -6.5rem;
-    left: 100;
+    left: 1;
+    transform: translateY(-40%);
     opacity: 0;
     & * {
         color: var.$darker-primary-color;
@@ -25,9 +25,13 @@
         }
     }
 }
+
+
 .filter-list {
-    @include flex(row, center, flex-start);
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    gap: .5rem;
     .filter-item {
         @include flex(row, center, flex-start);
         .qualification {

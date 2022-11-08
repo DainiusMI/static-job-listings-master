@@ -2,6 +2,7 @@
 @use "./components/filter";
 @use "./variables" as var;
 @use "./components/mixin" as *;
+@use "./components/media";
 
 * {
     box-sizing: border-box;
@@ -10,8 +11,8 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    
     @include flex(column, center, flex-start);
     gap: 4rem;
     font-family: 'Bai Jamjuree', sans-serif;
@@ -31,18 +32,7 @@ body {
         background-size:cover;
 
     }
-    .main {
-        width: 100%;
-        height: auto;
-        @include flex(column, center, center);
-        position: relative;
 
-        .job-list {
-            width: 100%;
-            @include flex(column, center, center);
-            gap: 2rem;
-        }
-    }
     .footer {
         font-size: 11px; text-align: center;
         a {
@@ -53,66 +43,20 @@ body {
 
 .shadow {   
     box-shadow: 5px 8px 12px 0px var.$shadow-color;
--webkit-box-shadow: 5px 8px 12px 0px var.$shadow-color;
--moz-box-shadow: 5px 8px 12px 0px var.$shadow-color;
+    -webkit-box-shadow: 5px 8px 12px 0px var.$shadow-color;
+    -moz-box-shadow: 5px 8px 12px 0px var.$shadow-color;
+}
+.main {
+    width: 100%;
+    height: auto;
+    @include flex(column, center, center);
+    position: relative;
 }
 
-
-@media (max-width: 375px) {
-    body {
-        width: 98vw;
-    }
-    .main {
-        .filter-container {
-            font-size: 13px;
-            padding: 1rem;
-            height: auto;
-            transform: translateY(-40%);
-            .filter-list {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: .5rem;
-            }
-        }
-    }
-    #job-list {
-        gap: 3rem;
-        hr {
-            display: block;
-            width: 100%;
-        }
-    }
-    .job-container {
-        @include flex(column, flex-start, center);
-        gap: 1rem;
-        padding: 1rem;
-        width: 90%;
-
-        .left-side {
-            @include flex(column, flex-start, center);
-            width: 100%;
-            padding-top: 2rem;
-            position: relative;
- 
-            .avatar {
-                width: 4rem;
-                height: 4rem;
-
-                position: absolute;
-                top: -15%;
-                left: 0;
-                transform: translateY(-50%);
-                
-            }
-        }
-        .right-side {
-            width: 100%;
-            justify-content: flex-start;
-            .qualifications {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-    }
+.job-list {
+    width: 100%;
+    @include flex(column, center, center);
+    gap: 3rem;
 }
+
 

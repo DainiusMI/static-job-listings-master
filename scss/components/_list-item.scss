@@ -4,75 +4,89 @@
 
 // just the list items layout
 .job-container {
-    list-style-type: none;
+    @include flex(column, flex-start, center);
+    gap: 1rem;
+
     width: 90%;
-    @include flex(row, center, space-between);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: .4rem 0 0 .4rem;
     background-color: var.$listing-color;
-    hr {
-        display: none;
-    }
-    .left-side {
-        width: 50%;
-        @include flex(row, center, flex-start);
-        gap: 1rem;
+    list-style-type: none;
+}
 
-        .logo {
-            height: 4rem;
-            width: 4rem;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+.left-side {
+    @include flex(column, flex-start, center);
+    gap: 1rem;
+
+    width: 100%;
+    padding-top: 2rem;
+
+    position: relative;
+    .avatar {
+        height: 4rem;
+        width: 4rem;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        position: absolute;
+        top: -15%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    .job-description {
+        @include flex(column, flex-start, center);
+        gap: .5rem;
+        .agency-name {
+            font-weight: 700;
+            color: var.$primary-color;
         }
-        .job-description {
-            @include flex(column, flex-start, center);
-            gap: .5rem;
-            .agency-name {
-                font-weight: 700;
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+
+            cursor: pointer;
+            &:hover {
                 color: var.$primary-color;
             }
-            .job-title {
-                font-weight: 700;
-                font-size: 1.1rem;
-
-                cursor: pointer;
-                &:hover {
-                    color: var.$primary-color;
-                }
-            }
-            .description-header,
-            .description-footer {
-                @include flex(row, center, flex-start);
-                gap: .8rem;
-                
-                i {
-                    font-size: .3rem;
-                }
-            }
-            .description-footer * {
-                font-size: .8rem;
-                opacity: .5;
+        }
+        .description-header,
+        .description-footer {
+            @include flex(row, center, flex-start);
+            gap: .8rem;
+            
+            i {
+                font-size: .3rem;
             }
         }
+        .description-footer * {
+            font-size: .8rem;
+            opacity: .5;
+        }
     }
-    .right-side {
-        width: 50%;
-        @include flex(row, center, flex-end);
-        .qualifications {
-            @include flex(row, center, flex-start);
-            gap: .5rem;
-            .qualification {
-                border-radius: .5rem;
-                cursor: pointer;
-                &:hover {
-                    background-color: var.$primary-color;
-                    color: var.$listing-color;
-                }
+}
+
+.right-side {
+    @include flex(row, center, flex-start);
+
+    width: 100%;
+    .qualifications {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: .5rem;
+        .qualification {
+            border-radius: .5rem;
+            cursor: pointer;
+            &:hover {
+                background-color: var.$primary-color;
+                color: var.$listing-color;
             }
         }
     }
 }
+
+
 .filter,
 .qualification {
     background-color: var.$background-color;
@@ -100,4 +114,9 @@
 .highlight {
     border-left: .4rem solid var.$darker-primary-color;
 
+}
+
+hr {
+    display: block;
+    width: 100%;
 }

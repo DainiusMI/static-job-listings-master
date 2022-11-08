@@ -1,0 +1,56 @@
+@use "./mixin" as *;
+
+
+
+@media (min-width: 375px) { 
+
+    .filter-container {
+        padding: 1.5rem 2.5rem;
+
+        top: -5rem;
+        .filter-list {
+
+            @include flex(row, center, flex-start);
+            gap: 1rem;
+
+        }
+    }
+    .main {
+        .job-list {
+            width: 100%;
+            @include flex(column, center, center);
+            gap: 2rem;
+        }
+    }
+    .job-container {
+        @include flex(row, center, space-between);
+        padding: 1.5rem;
+   
+     
+        hr {
+            display: none;
+        }
+        .left-side {
+            @include flex(row, center, flex-start);
+            padding: 0;
+            width: 50%;
+            position: static;
+            .avatar {
+                position: static;
+                background-position: center;
+                transform: translateY(0);
+            }
+        }
+
+        .right-side {
+            @include flex(row, center, flex-end);
+            width: 50%;
+
+            .qualifications {
+                @include flex(row, center, flex-start);
+
+            }
+        }
+    }
+
+}
