@@ -1,6 +1,7 @@
 // job listing array
 import dataArr from "./data.json" assert {type: "json"};
 
+
 const jobList = document.getElementById("job-list");
 
 let filterArr = [];
@@ -8,7 +9,7 @@ let dataFiltered = [];
 
 
 // render job listings
-function generateListings(obj) {
+function generateListings() {
     let renderString = "";
     dataFiltered.map(obj =>{
         if (obj.featured === true) {
@@ -83,7 +84,6 @@ function generateFilter() {
 }
 
 
-
 function filterData() {
     dataFiltered = dataArr.map(obj => {
         let found = 0;
@@ -113,12 +113,12 @@ function renderListings() {
     generateListings();
 }
 
+
 renderListings();
 
 
 let qualification = document.querySelectorAll(".qualification");
 const filterList = document.getElementById("filter-list");
-
 
 
 // display or hide filter container
@@ -158,6 +158,7 @@ const trackFilterMutations = mutations => {
         }
     })
 }
+
 
 const trackListingMutations = mutations => {
     mutations.forEach(mutation => {
@@ -200,11 +201,4 @@ const observeListings = new MutationObserver(trackListingMutations);
 
 observeFilter.observe(filterList, config);
 observeListings.observe(jobList, config);
-
-
-
-
-
-
-
 
